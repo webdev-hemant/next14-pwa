@@ -1,13 +1,21 @@
 import Image from "next/legacy/image";
 
-const Card = () => {
+interface IProps {
+  img_url: string;
+  title: string;
+  desc: string;
+}
+
+const Card = (props: IProps) => {
+  const { title, desc, img_url } = props;
+
   return (
     <div className="flex justify-center items-center">
       <div className="max-w-[500px] mx-auto">
         <div className="relative flex w-full max-w-full flex-col rounded-xl bg-clip-border text-gray-700 shadow-lg bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
           <div className="w-auto h-56 relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
             <Image
-              src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
+              src={img_url}
               alt="ui/ux review check"
               layout="fill"
               objectFit="cover"
@@ -33,7 +41,7 @@ const Card = () => {
           <div className="p-6">
             <div className="flex items-center justify-between mb-3">
               <h5 className="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900 dark:text-white">
-                Wooden House, Florida
+                {title}
               </h5>
               <p className="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 dark:text-white antialiased">
                 <svg
@@ -52,8 +60,7 @@ const Card = () => {
               </p>
             </div>
             <p className="block font-sans text-base antialiased font-light leading-relaxed text-gray-700 dark:text-white">
-              Enter a freshly updated and thoughtfully furnished peaceful home
-              surrounded by ancient trees, stone walls, and open meadows.
+              {desc}
             </p>
             <div className="inline-flex flex-wrap items-center gap-3 mt-8 group">
               <span

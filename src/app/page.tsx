@@ -1,23 +1,22 @@
 import Logout from "@/components/molecules/Logout";
-import { authOptions } from "@/auth";
-
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
 import Card from "@/components/atoms/card/card";
-import { allRoutes } from "@/constants/allRoutes";
+import { getAllPublicPosts } from "@/services/postApis";
 
 const HomePage = async () => {
-  const session = await getServerSession(authOptions);
-
-  if (!session) {
-    redirect(allRoutes.LOGIN);
-  }
+  const cards = await getAllPublicPosts();
 
   return (
     <div className="flex flex-col items-center gap-5 m-4 ">
-      <Card />
-      <Card />
-      <Card />
+      {cards?.map(({ img_url, content }) => {
+        return (
+          <Card
+            key={img_url}
+            img_url={img_url}
+            desc={content}
+            title={content}
+          />
+        );
+      })}
       <Logout />
     </div>
   );
