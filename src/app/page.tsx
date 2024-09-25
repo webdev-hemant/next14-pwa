@@ -7,11 +7,11 @@ const HomePage = async () => {
 
   return (
     <div className="flex flex-col items-center gap-5 m-4 ">
-      {cards?.map(({ img_url, content }) => {
+      {cards?.posts?.map(({ media: { images }, content }) => {
         return (
           <Card
-            key={img_url}
-            img_url={img_url}
+            key={images[0]}
+            img_url={images[0]}
             desc={content}
             title={content}
           />

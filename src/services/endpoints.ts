@@ -1,2 +1,2 @@
 // post apis
-export const getAllPublicPostsEndpoint = "/api/public-posts";
+export const getAllPublicPostsEndpoint = "/publicPost/api/public-posts";
