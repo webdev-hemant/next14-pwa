@@ -2,13 +2,11 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 import { allRoutes } from "./constants/allRoutes";
-
-// Define the secret for JWT validation
-const secret = process.env.NEXT_PUBLIC_SECRET as string;
+import { AUTH_SECRET } from "./constants/allEnv";
 
 export async function middleware(req: NextRequest) {
   // @ts-ignore
-  const token = await getToken({ req, secret });
+  const token = await getToken({ req, secret: AUTH_SECRET });
 
   // If there's no token and the request is not to a public path, redirect to login
   if (!token && !req.nextUrl.pathname.startsWith("/public")) {

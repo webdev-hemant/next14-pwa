@@ -1,7 +1,5 @@
+import { INTERNAL_BASE_URL, PUBLIC_BASE_URL } from "@/constants/allEnv";
 import axios from "axios";
-
-const PUBLIC_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-const INTERNAL_BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_BASE_URL;
 
 const axiosPublic = axios.create({
   baseURL: PUBLIC_BASE_URL,

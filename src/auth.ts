@@ -4,12 +4,12 @@ import {
   credentials,
   credentialsAuth,
 } from "./services/next-auth-options/credentials";
-
 import GoogleProvider from "next-auth/providers/google";
-
-const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET;
-const authSecret = process.env.NEXT_PUBLIC_SECRET;
+import {
+  AUTH_SECRET,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+} from "./constants/allEnv";
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -35,5 +35,5 @@ export const authOptions: NextAuthOptions = {
       return { ...token, ...user };
     },
   },
-  secret: authSecret,
+  secret: AUTH_SECRET,
 };
