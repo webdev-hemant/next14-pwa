@@ -47,12 +47,13 @@ export const Chat = ({ socket, username, room }: IProps) => {
       message: string;
       time: string;
     }) => {
+      console.log({ data });
       setMessageList((list) => [...list, data]);
     };
-    socket.on("receive_message", handleReceiveMsg);
+    socket.on("newMessage", handleReceiveMsg);
 
     return () => {
-      socket.off("receive_message", handleReceiveMsg);
+      socket.off("newMessage", handleReceiveMsg);
     };
   }, [socket]);
 

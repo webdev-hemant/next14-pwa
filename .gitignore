@@ -2,6 +2,7 @@
 
 .env
 
+.next
 # dependencies
 /node_modules
 /.pnp
@@ -12,7 +13,7 @@
 /coverage
 
 # next.js
-/.next/
+# /.next/
 /out/
 
 # production

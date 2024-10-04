@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import io, { Socket } from "socket.io-client";
 import { Chat } from "@/components/molecules/ChatComponent/chatComponent";
+import { SOCKET_CONNECTION } from "@/constants/allEnv";
 
 const App = () => {
   const [username, setUsername] = useState("");
@@ -10,13 +11,14 @@ const App = () => {
   const [socket, setSocket] = useState<Socket<any, any>>();
 
   useEffect(() => {
-    const socketInstance = io("http://localhost:5000");
+    console.log({ SOCKET_CONNECTION });
+    const socketInstance = io(SOCKET_CONNECTION as string);
     setSocket(socketInstance);
   }, []);
 
   const joinChat = () => {
     if (username !== "" && room !== "" && socket) {
-      socket.emit("join_room", room);
+      socket.emit("joinConversation", room);
       setShowChat(true);
     }
   };

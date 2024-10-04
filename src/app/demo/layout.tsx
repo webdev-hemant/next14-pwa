@@ -1,3 +1,4 @@
+import BNavigationTwo from "@/components/atoms/bottomNavigation/bNavigationTwo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,5 +14,10 @@ export default function DemoLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <main>{children}</main>;
+  return (
+    <main>
+      {children}
+      <BNavigationTwo />
+    </main>
+  );
 }

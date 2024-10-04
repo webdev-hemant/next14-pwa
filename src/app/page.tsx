@@ -1,6 +1,7 @@
 import Logout from "@/components/molecules/Logout";
 import Card from "@/components/atoms/card/card";
 import { getAllPublicPosts } from "@/services/postApis";
+import BNavigationTwo from "@/components/atoms/bottomNavigation/bNavigationTwo";
 
 const HomePage = async () => {
   const cards = await getAllPublicPosts();
@@ -18,6 +19,7 @@ const HomePage = async () => {
         );
       })}
       <Logout />
+      <BNavigationTwo />
     </div>
   );
 };

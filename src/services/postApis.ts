@@ -19,6 +19,11 @@ interface IPostRes {
 }
 
 export const getAllPublicPosts = async (): Promise<IPostRes> => {
-  const res = await axiosPublic.get(getAllPublicPostsEndpoint);
-  return res.data;
+  try {
+    const res = await axiosPublic.get(getAllPublicPostsEndpoint);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    return [] as unknown as IPostRes;
+  }
 };

@@ -10,7 +10,6 @@ export default function RootProviders({
   return (
     <>
       <SessionProvider>{children}</SessionProvider>
-      <BNavigationTwo />
     </>
   );
 }
