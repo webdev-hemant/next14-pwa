@@ -18,12 +18,17 @@ interface IPostRes {
   posts: IPost[];
 }
 
-export const getAllPublicPosts = async (): Promise<IPostRes> => {
+type IgetAllPublicPosts = {
+  isError: boolean;
+  data: IPostRes;
+};
+
+export const getAllPublicPosts = async (): Promise<IgetAllPublicPosts> => {
   try {
     const res = await axiosPublic.get(getAllPublicPostsEndpoint);
-    return res.data;
-  } catch (error) {
-    console.log(error);
-    return [] as unknown as IPostRes;
+    return { isError: false, data: res.data };
+  } catch (error: any) {
+    console.log({ homepagePostError: error.response.data });
+    return { isError: true, data: error.response.data };
   }
 };
