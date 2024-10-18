@@ -1,4 +1,4 @@
-import { axiosInternal } from "./axiosInstance";
+import { axiosInternal } from "../axiosInstance";
 
 export const checkLogin = async ({
   email,

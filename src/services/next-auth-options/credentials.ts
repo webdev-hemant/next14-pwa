@@ -1,4 +1,4 @@
-import { checkLogin } from "../loginApis";
+import { checkLogin } from "../servicesApis/loginApis";
 
 export const credentials = {
   email: { type: "string" },

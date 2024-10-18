@@ -1,5 +1,5 @@
 import { axiosPublic } from "@/services/axiosInstance";
-import { getAllPublicPostsEndpoint } from "./endpoints";
+import { getAllPublicPostsEndpoint } from "../endpoints";
 
 interface IPost {
   id: number;
@@ -28,7 +28,7 @@ export const getAllPublicPosts = async (): Promise<IgetAllPublicPosts> => {
     const res = await axiosPublic.get(getAllPublicPostsEndpoint);
     return { isError: false, data: res.data };
   } catch (error: any) {
-    console.log({ homepagePostError: error.response.data });
-    return { isError: true, data: error.response.data };
+    console.log({ homepagePostError: error?.response?.data });
+    return { isError: true, data: error?.response?.data };
   }
 };

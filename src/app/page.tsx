@@ -1,6 +1,6 @@
 import Logout from "@/components/molecules/Logout";
 import Card from "@/components/atoms/card/card";
-import { getAllPublicPosts } from "@/services/postApis";
+import { getAllPublicPosts } from "@/services/servicesApis/postApis";
 import BNavigationTwo from "@/components/atoms/bottomNavigation/bNavigationTwo";
 
 const HomePage = async () => {
