@@ -1,6 +1,8 @@
 pm2 stop next14
 pm2 delete next14
 
+git add .
+git stash
 git pull origin main
 
 npm i
