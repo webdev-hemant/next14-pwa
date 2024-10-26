@@ -3,7 +3,6 @@
 full-deploy.sh
 restart.sh
 
-.env
 
 .next
 # dependencies
