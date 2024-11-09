@@ -8,8 +8,8 @@ export const checkLogin = async ({
   password: string;
 }) => {
   try {
-    const { data } = await axiosInternal.post("/api/login", {
-      email,
+    const { data } = await axiosInternal.post("/api/auth/login", {
+      usernameOrEmail: email,
       password,
     });
 

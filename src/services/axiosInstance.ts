@@ -38,15 +38,15 @@ axiosPublic.interceptors.request.use(
 axiosPublic.interceptors.response.use(
   (response) => response,
   (error) => {
-    const { status } = error.response;
-    switch (
-      status
-      //   case 401:
-      //     localStorage.removeItem("token");
-      //     window.location.href = allRoutes.LOGIN;
-      //     break;
-    ) {
-    }
+    // const { status } = error?.response;
+    // switch (
+    //   status
+    //   //   case 401:
+    //   //     localStorage.removeItem("token");
+    //   //     window.location.href = allRoutes.LOGIN;
+    //   //     break;
+    // ) {
+    // }
     throw error;
   }
 );
@@ -54,14 +54,14 @@ axiosPublic.interceptors.response.use(
 axiosInternal.interceptors.request.use(
   (config) => {
     // Get the token from local storage
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
 
-    // If the token exists, add it to the headers
-    if (token) {
-      // Remove quotes from both sides
-      let trimmedToken = token.replace(/^"|"$/g, "");
-      config.headers.Authorization = `Bearer ${trimmedToken}`;
-    }
+    // // If the token exists, add it to the headers
+    // if (token) {
+    //   // Remove quotes from both sides
+    //   let trimmedToken = token.replace(/^"|"$/g, "");
+    //   config.headers.Authorization = `Bearer ${trimmedToken}`;
+    // }
 
     return config;
   },
@@ -74,15 +74,15 @@ axiosInternal.interceptors.request.use(
 axiosInternal.interceptors.response.use(
   (response) => response,
   (error) => {
-    const { status } = error.response;
-    switch (
-      status
-      //   case 401:
-      //     localStorage.removeItem("token");
-      //     window.location.href = allRoutes.LOGIN;
-      //     break;
-    ) {
-    }
+    // const { status } = error.response;
+    // switch (
+    //   status
+    //   //   case 401:
+    //   //     localStorage.removeItem("token");
+    //   //     window.location.href = allRoutes.LOGIN;
+    //   //     break;
+    // ) {
+    // }
     throw error;
   }
 );
