@@ -1,4 +1,4 @@
-import { axiosPublic } from "@/services/axiosInstance";
+import { axiosPublic, axiosInternal } from "@/services/axiosInstance";
 import { getAllConversationsEndpoint } from "../endpoints";
 
 interface IPost {
@@ -25,10 +25,10 @@ type IGetAllConversations = {
 
 export const getAllConversations = async (): Promise<IGetAllConversations> => {
   try {
-    const res = await axiosPublic.get(getAllConversationsEndpoint);
+    const res = await axiosInternal.get(getAllConversationsEndpoint);
     return { isError: false, data: res.data };
   } catch (error: any) {
-    console.log({ getAllConversationsError: error.response.data });
-    return { isError: true, data: error.response.data };
+    console.log({ getAllConversationsError: error?.response?.data, error });
+    return { isError: true, data: error?.response?.data };
   }
 };
