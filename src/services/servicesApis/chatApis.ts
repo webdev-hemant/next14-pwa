@@ -28,7 +28,7 @@ export const getAllConversations = async (): Promise<IGetAllConversations> => {
     const res = await axiosInternal.get(getAllConversationsEndpoint);
     return { isError: false, data: res.data };
   } catch (error: any) {
-    console.log({ getAllConversationsError: error?.response?.data, error });
+    // console.log({ getAllConversationsError: error?.response?.data });
     return { isError: true, data: error?.response?.data };
   }
 };

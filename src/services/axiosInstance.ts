@@ -1,6 +1,7 @@
-import { INTERNAL_BASE_URL, PUBLIC_BASE_URL } from "@/constants/allEnv";
 import axios from "axios";
+import { INTERNAL_BASE_URL, PUBLIC_BASE_URL } from "@/constants/allEnv";
 
+// Public Axios instance (no token required)
 const axiosPublic = axios.create({
   baseURL: PUBLIC_BASE_URL,
   headers: {
@@ -8,6 +9,7 @@ const axiosPublic = axios.create({
   },
 });
 
+// Internal Axios instance (requires token)
 const axiosInternal = axios.create({
   baseURL: INTERNAL_BASE_URL,
   headers: {
@@ -15,22 +17,39 @@ const axiosInternal = axios.create({
   },
 });
 
-axiosPublic.interceptors.request.use(
-  (config) => {
-    // // Get the token from local storage
-    // const token = localStorage.getItem("token"); // Adjust the key as needed
+// Add a request interceptor to axiosInternal to include the token
+axiosInternal.interceptors.request.use(
+  async (config) => {
+    // Retrieve the session to get the token
+    // const token = 'session?.user?.token;'
 
     // // If the token exists, add it to the headers
     // if (token) {
-    //   // Remove quotes from both sides
-    //   let trimmedToken = token.replace(/^"|"$/g, "");
-    //   config.headers.Authorization = `Bearer ${trimmedToken}`;
+    //   config.headers.Authorization = `Bearer ${token}`;
     // }
 
     return config;
   },
   (error) => {
     // Handle any errors that occur during the request setup
+    return Promise.reject(error);
+  }
+);
+
+// Response interceptors (for error handling)
+axiosInternal.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // Handle specific error status codes if needed
+    throw error;
+  }
+);
+
+axiosPublic.interceptors.request.use(
+  (config) => {
+    return config;
+  },
+  (error) => {
     return Promise.reject(error);
   }
 );
@@ -38,51 +57,6 @@ axiosPublic.interceptors.request.use(
 axiosPublic.interceptors.response.use(
   (response) => response,
   (error) => {
-    // const { status } = error?.response;
-    // switch (
-    //   status
-    //   //   case 401:
-    //   //     localStorage.removeItem("token");
-    //   //     window.location.href = allRoutes.LOGIN;
-    //   //     break;
-    // ) {
-    // }
-    throw error;
-  }
-);
-
-axiosInternal.interceptors.request.use(
-  (config) => {
-    // Get the token from local storage
-    // const token = localStorage.getItem("token");
-
-    // // If the token exists, add it to the headers
-    // if (token) {
-    //   // Remove quotes from both sides
-    //   let trimmedToken = token.replace(/^"|"$/g, "");
-    //   config.headers.Authorization = `Bearer ${trimmedToken}`;
-    // }
-
-    return config;
-  },
-  (error) => {
-    // Handle any errors that occur during the request setup
-    return Promise.reject(error);
-  }
-);
-
-axiosInternal.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    // const { status } = error.response;
-    // switch (
-    //   status
-    //   //   case 401:
-    //   //     localStorage.removeItem("token");
-    //   //     window.location.href = allRoutes.LOGIN;
-    //   //     break;
-    // ) {
-    // }
     throw error;
   }
 );
