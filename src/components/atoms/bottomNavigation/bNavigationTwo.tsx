@@ -1,9 +1,16 @@
+// "use client";
 import React from "react";
 import DarkModeToggle from "@/components/atoms/darkModeToggle/darkModeToggle";
 import { allRoutes } from "@/constants/allRoutes";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth";
+// import { useSession } from "next-auth/react";
 
-const BNavigationTwo = () => {
+const BNavigationTwo = async () => {
+  // const user = useSession()?.data?.user;
+  const session = await getServerSession(authOptions);
+
   return (
     <>
       <div className="py-12" />
