@@ -1,11 +1,10 @@
-import { authOptions } from "@/auth";
 import ForgotPassForm from "@/components/atoms/forgotPassForm/forgotPassForm";
 import { allRoutes } from "@/constants/allRoutes";
-import { getServerSession } from "next-auth";
+import { useServerSession } from "@/hooks/useServerSession";
 import { redirect } from "next/navigation";
 
 const ForgotPassword = async () => {
-  const session = await getServerSession(authOptions);
+  const session = await useServerSession();
 
   if (session) {
     redirect(allRoutes.HOME);

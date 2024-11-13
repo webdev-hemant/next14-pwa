@@ -3,12 +3,16 @@ import React, { useEffect, useState } from "react";
 import io, { Socket } from "socket.io-client";
 import { Chat } from "@/components/molecules/ChatComponent/chatComponent";
 import { SOCKET_CONNECTION } from "@/constants/allEnv";
+import { useClientSession } from "@/hooks/useClientSession";
 
 const App = () => {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [showChat, setShowChat] = useState(false);
   const [socket, setSocket] = useState<Socket<any, any>>();
+  const { user } = useClientSession();
+
+  console.log(user)
 
   useEffect(() => {
     console.log({ SOCKET_CONNECTION });
