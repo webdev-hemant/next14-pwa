@@ -20,18 +20,12 @@ interface IPostRes {
 
 type IGetAllConversations = {
   isError: boolean;
-  data: IPostRes;
+  data: any;
 };
 
-export const getAllConversations = async (
-  token: string
-): Promise<IGetAllConversations> => {
+export const getAllConversations = async (): Promise<IGetAllConversations> => {
   try {
-    const res = await axiosInternal.get(getAllConversationsEndpoint, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const res = await axiosInternal.get(getAllConversationsEndpoint);
     return { isError: false, data: res.data };
   } catch (error: any) {
     // console.log({ getAllConversationsError: error?.response?.data });

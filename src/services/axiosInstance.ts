@@ -1,5 +1,6 @@
 import axios from "axios";
 import { INTERNAL_BASE_URL, PUBLIC_BASE_URL } from "@/constants/allEnv";
+import { getCookie, removeCookie } from "@/utils";
 
 // Public Axios instance (no token required)
 const axiosPublic = axios.create({
@@ -22,11 +23,11 @@ axiosInternal.interceptors.request.use(
   async (config) => {
     // Retrieve the session to get the token
     // const token = 'session?.user?.token;'
-
+    const token = getCookie("token");
     // // If the token exists, add it to the headers
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`;
-    // }
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
 
     return config;
   },
@@ -40,6 +41,10 @@ axiosInternal.interceptors.request.use(
 axiosInternal.interceptors.response.use(
   (response) => response,
   (error) => {
+    if(error.status === 401) {
+      removeCookie('token')
+      window.location.href = '/auth/login';
+    }
     // Handle specific error status codes if needed
     throw error;
   }

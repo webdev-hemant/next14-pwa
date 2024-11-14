@@ -25,19 +25,20 @@ export function ChatLayout({
   defaultCollapsed = false,
   navCollapsedSize,
 }: ChatLayoutProps) {
-  const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
-  const [selectedUser, setSelectedUser] = React.useState([]);
+  const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed);
+  const [selectedUser, setSelectedUser] = useState<any>([]);
   const [apiRes, setApiRes] = useState<any[]>([]);
   const [isMobile, setIsMobile] = useState(false);
   const setMessages = useChatStore((state) => state.setMessages);
 
   useEffect(() => {
     (async () => {
-      const token = getCookie("token");
-      const { data } = await getAllConversations(`Bearer ${token}`);
-      setApiRes(data as any);
-      setSelectedUser(data?.[0] as any);
-      setMessages((messages) => [...messages, ...(data?.[0]?.messages || [])]);
+      const { data } = await getAllConversations();
+      if (!data?.error) {
+        setApiRes(data as any);
+        setSelectedUser(data?.[0] as any);
+        setMessages(() => data?.[0]?.messages || []);
+      }
     })();
   }, []);
 
@@ -98,7 +99,7 @@ export function ChatLayout({
         <Sidebar
           handleConversationClick={handleConversationClick}
           isCollapsed={isCollapsed || isMobile}
-          chats={apiRes.map((user) => ({
+          chats={apiRes?.map((user) => ({
             name: user.name,
             messages: user.messages ?? [],
             avatar: user.avatar,
