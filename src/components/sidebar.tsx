@@ -23,9 +23,11 @@ interface SidebarProps {
   }[];
   onClick?: () => void;
   isMobile: boolean;
+  handleConversationClick: () => void;
 }
 
-export function Sidebar({ chats, isCollapsed, isMobile }: SidebarProps) {
+export function Sidebar({ chats, isCollapsed, isMobile, handleConversationClick }: SidebarProps) {
+
   return (
     <div
       data-collapsed={isCollapsed}
@@ -43,7 +45,7 @@ export function Sidebar({ chats, isCollapsed, isMobile }: SidebarProps) {
               href="#"
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
-                "h-9 w-9",
+                "h-9 w-9"
               )}
             >
               <MoreHorizontal size={20} />
@@ -53,7 +55,7 @@ export function Sidebar({ chats, isCollapsed, isMobile }: SidebarProps) {
               href="#"
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
-                "h-9 w-9",
+                "h-9 w-9"
               )}
             >
               <SquarePen size={20} />
@@ -73,7 +75,7 @@ export function Sidebar({ chats, isCollapsed, isMobile }: SidebarProps) {
                       buttonVariants({ variant: chat.variant, size: "icon" }),
                       "h-11 w-11 md:h-16 md:w-16",
                       chat.variant === "secondary" &&
-                        "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white",
+                        "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
                     )}
                   >
                     <Avatar className="flex justify-center items-center">
@@ -100,11 +102,12 @@ export function Sidebar({ chats, isCollapsed, isMobile }: SidebarProps) {
             <Link
               key={index}
               href="#"
+              onClick={() => handleConversationClick()}
               className={cn(
                 buttonVariants({ variant: chat.variant, size: "xl" }),
                 chat.variant === "secondary" &&
                   "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white shrink",
-                "justify-start gap-4",
+                "justify-start gap-4"
               )}
             >
               <Avatar className="flex justify-center items-center">
@@ -129,7 +132,7 @@ export function Sidebar({ chats, isCollapsed, isMobile }: SidebarProps) {
                 )}
               </div>
             </Link>
-          ),
+          )
         )}
       </nav>
     </div>

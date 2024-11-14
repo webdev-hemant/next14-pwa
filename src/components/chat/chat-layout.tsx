@@ -12,6 +12,7 @@ import { Sidebar } from "../sidebar";
 import { Chat } from "./chat";
 import { getSession } from "next-auth/react";
 import { getAllConversations } from "@/services/servicesApis/chatApis";
+import { getCookie } from "@/utils";
 
 interface ChatLayoutProps {
   defaultLayout: number[] | undefined;
@@ -26,15 +27,15 @@ export function ChatLayout({
 }: ChatLayoutProps) {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
   const [selectedUser, setSelectedUser] = React.useState(userData[0]);
+  const [apiRes, setApiRes] = useState<any[]>([])
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const session = await getSession();
-      console.log({ chatLayout: session });
-      const data = await getAllConversations(`Bearer ${session?.user?.token}`);
-
-      console.log({ data });
+      const token = getCookie("token");
+      const { data } = await getAllConversations(`Bearer ${token}`);
+      setApiRes(data as any);
+      console.log(data);
     })();
   }, []);
 
@@ -54,6 +55,10 @@ export function ChatLayout({
       window.removeEventListener("resize", checkScreenWidth);
     };
   }, []);
+
+  const handleConversationClick = () => {
+    setSelectedUser(apiRes[0]);
+  }
 
   return (
     <ResizablePanelGroup
@@ -89,8 +94,9 @@ export function ChatLayout({
         )}
       >
         <Sidebar
+          handleConversationClick={handleConversationClick}
           isCollapsed={isCollapsed || isMobile}
-          chats={userData.map((user) => ({
+          chats={apiRes.map((user) => ({
             name: user.name,
             messages: user.messages ?? [],
             avatar: user.avatar,
