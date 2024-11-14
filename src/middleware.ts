@@ -5,17 +5,33 @@ import { allRoutes } from "./constants/allRoutes";
 import { AUTH_SECRET } from "./constants/allEnv";
 
 export async function middleware(req: NextRequest) {
-  // @ts-ignore
-  const token = await getToken({ req, secret: AUTH_SECRET });
+  // Check if the token exists in the cookies
+  let token = req.cookies.get("token")?.value;
 
-  // If there's no token and the request is not to a public path, redirect to login
+  // If no token in cookies, attempt to get it from the JWT
+  if (!token) {
+    token = (await getToken({ req, secret: AUTH_SECRET }))?.token as string;
+  }
+
+  // If there's still no token and the request is not to a public path, redirect to login
   if (!token && !req.nextUrl.pathname.startsWith("/public")) {
     const url = req.nextUrl.clone();
     url.pathname = allRoutes.LOGIN;
     return NextResponse.redirect(url);
   }
 
-  // If token exists or request is to a public path, continue as normal
+  if (token) {
+    const response = NextResponse.next();
+    response.cookies.set("token", token as string, {
+      httpOnly: false,
+      // secure: process.env.NODE_ENV === "production",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7, // 1 week
+    });
+    return response;
+  }
+
+  // Continue as normal for public paths
   return NextResponse.next();
 }
 

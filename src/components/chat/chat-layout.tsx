@@ -10,6 +10,8 @@ import {
 import { cn } from "@/lib/utils";
 import { Sidebar } from "../sidebar";
 import { Chat } from "./chat";
+import { getSession } from "next-auth/react";
+import { getAllConversations } from "@/services/servicesApis/chatApis";
 
 interface ChatLayoutProps {
   defaultLayout: number[] | undefined;
@@ -25,6 +27,16 @@ export function ChatLayout({
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
   const [selectedUser, setSelectedUser] = React.useState(userData[0]);
   const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      const session = await getSession();
+      console.log({ chatLayout: session });
+      const data = await getAllConversations(`Bearer ${session?.user?.token}`);
+
+      console.log({ data });
+    })();
+  }, []);
 
   useEffect(() => {
     const checkScreenWidth = () => {
