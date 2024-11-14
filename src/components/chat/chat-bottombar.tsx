@@ -82,24 +82,24 @@ export default function ChatBottombar({ isMobile }: ChatBottombarProps) {
       inputRef.current.focus();
     }
 
-    if (!hasInitialResponse) {
-      setisLoading(true);
-      setTimeout(() => {
-        setMessages((messages) => [
-          ...messages.slice(0, messages.length - 1),
-          {
-            id: messages.length + 1,
-            avatar:
-              "https://images.freeimages.com/images/large-previews/971/basic-shape-avatar-1632968.jpg?fmt=webp&h=350",
-            name: "Jane Doe",
-            message: "Awesome! I am just chilling outside.",
-            timestamp: formattedTime,
-          },
-        ]);
-        setisLoading(false);
-        setHasInitialResponse(true);
-      }, 2500);
-    }
+    // if (!hasInitialResponse) {
+    //   setisLoading(true);
+    //   setTimeout(() => {
+    //     setMessages((messages) => [
+    //       ...messages.slice(0, messages.length - 1),
+    //       {
+    //         id: messages.length + 1,
+    //         avatar:
+    //           "https://images.freeimages.com/images/large-previews/971/basic-shape-avatar-1632968.jpg?fmt=webp&h=350",
+    //         name: "Jane Doe",
+    //         message: "Awesome! I am just chilling outside.",
+    //         timestamp: formattedTime,
+    //       },
+    //     ]);
+    //     setisLoading(false);
+    //     setHasInitialResponse(true);
+    //   }, 2500);
+    // }
   }, []);
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {

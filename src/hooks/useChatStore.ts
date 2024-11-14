@@ -66,7 +66,7 @@ const useChatStore = create<State & Actions>()((set) => ({
   setchatBotMessages: (fn) =>
     set(({ chatBotMessages }) => ({ chatBotMessages: fn(chatBotMessages) })),
 
-  messages: userData[0].messages,
+  messages: [] || userData[0].messages,
   setMessages: (fn) => set(({ messages }) => ({ messages: fn(messages) })),
 
   hasInitialAIResponse: false,

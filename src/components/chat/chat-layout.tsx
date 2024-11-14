@@ -10,9 +10,9 @@ import {
 import { cn } from "@/lib/utils";
 import { Sidebar } from "../sidebar";
 import { Chat } from "./chat";
-import { getSession } from "next-auth/react";
 import { getAllConversations } from "@/services/servicesApis/chatApis";
 import { getCookie } from "@/utils";
+import useChatStore from "@/hooks/useChatStore";
 
 interface ChatLayoutProps {
   defaultLayout: number[] | undefined;
@@ -26,16 +26,18 @@ export function ChatLayout({
   navCollapsedSize,
 }: ChatLayoutProps) {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
-  const [selectedUser, setSelectedUser] = React.useState(userData[0]);
-  const [apiRes, setApiRes] = useState<any[]>([])
+  const [selectedUser, setSelectedUser] = React.useState([]);
+  const [apiRes, setApiRes] = useState<any[]>([]);
   const [isMobile, setIsMobile] = useState(false);
+  const setMessages = useChatStore((state) => state.setMessages);
 
   useEffect(() => {
     (async () => {
       const token = getCookie("token");
       const { data } = await getAllConversations(`Bearer ${token}`);
       setApiRes(data as any);
-      console.log(data);
+      setSelectedUser(data?.[0] as any);
+      setMessages((messages) => [...messages, ...(data?.[0]?.messages || [])]);
     })();
   }, []);
 
@@ -58,7 +60,7 @@ export function ChatLayout({
 
   const handleConversationClick = () => {
     setSelectedUser(apiRes[0]);
-  }
+  };
 
   return (
     <ResizablePanelGroup
