@@ -33,7 +33,8 @@ export function ChatLayout({
 
   useEffect(() => {
     (async () => {
-      const { data } = await getAllConversations();
+      const token = getCookie('token');
+      const { data } = await getAllConversations(token as string);
       if (!data?.error) {
         setApiRes(data as any);
         setSelectedUser(data?.[0] as any);

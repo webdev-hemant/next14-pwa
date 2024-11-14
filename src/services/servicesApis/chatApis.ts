@@ -23,9 +23,13 @@ type IGetAllConversations = {
   data: any;
 };
 
-export const getAllConversations = async (): Promise<IGetAllConversations> => {
+export const getAllConversations = async (token: string): Promise<IGetAllConversations> => {
   try {
-    const res = await axiosInternal.get(getAllConversationsEndpoint);
+    const res = await axiosInternal.get(getAllConversationsEndpoint, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
     return { isError: false, data: res.data };
   } catch (error: any) {
     // console.log({ getAllConversationsError: error?.response?.data });
