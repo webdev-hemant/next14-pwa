@@ -13,12 +13,15 @@ import { Chat } from "./chat";
 import { getAllConversations } from "@/services/servicesApis/chatApis";
 import { getCookie } from "@/utils";
 import useChatStore from "@/hooks/useChatStore";
+import { socketConnection } from "@/utils/socket";
 
 interface ChatLayoutProps {
   defaultLayout: number[] | undefined;
   defaultCollapsed?: boolean;
   navCollapsedSize: number;
 }
+
+const roomId = "b1588682-13de-4d7c-86c6-151a2b60d8d7";
 
 export function ChatLayout({
   defaultLayout = [320, 480],
@@ -30,6 +33,37 @@ export function ChatLayout({
   const [apiRes, setApiRes] = useState<any[]>([]);
   const [isMobile, setIsMobile] = useState(false);
   const setMessages = useChatStore((state) => state.setMessages);
+
+  const [author, setAuthor] = useState("Hemant");
+  const [messages, setMessagesNew] = useState<any[]>([]);
+  const [message, setMessage] = useState("Hi cat");
+
+  const sendMessage = () => {
+    socketConnection.emit("sendMessage", {
+      conversationId: roomId,
+      content: message,
+    });
+    setMessagesNew((prevMessages) => [...prevMessages, { message, author }]);
+    setMessage("");
+  };
+
+  useEffect(() => {
+    socketConnection?.on("newMessage", ({ user, message }) => {
+      console.log({ user, message });
+      setMessagesNew((prevMessages) => [
+        ...prevMessages,
+        { message: message, author: user },
+      ]);
+    });
+
+    // const joinRoom = () => {
+    socketConnection?.emit("joinConversation", roomId);
+    // };
+
+    return () => {
+      socketConnection?.off("newMessage");
+    };
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -115,6 +149,7 @@ export function ChatLayout({
           messages={selectedUser.messages}
           selectedUser={selectedUser}
           isMobile={isMobile}
+          sendMessage={sendMessage}
         />
       </ResizablePanel>
     </ResizablePanelGroup>

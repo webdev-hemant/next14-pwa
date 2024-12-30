@@ -8,15 +8,17 @@ interface ChatProps {
   messages?: Message[];
   selectedUser: UserData;
   isMobile: boolean;
+  sendMessage: () => void;
 }
 
-export function Chat({ messages, selectedUser, isMobile }: ChatProps) {
+export function Chat({ messages, selectedUser, isMobile, sendMessage }: ChatProps) {
   const messagesState = useChatStore((state) => state.messages);
 
-  const sendMessage = (newMessage: Message) => {
+  const handleSendMessage = (newMessage: Message) => {
     useChatStore.setState((state) => ({
       messages: [...state.messages, newMessage],
     }));
+    sendMessage();
   };
 
   return (
@@ -26,7 +28,7 @@ export function Chat({ messages, selectedUser, isMobile }: ChatProps) {
       <ChatList
         messages={messagesState}
         selectedUser={selectedUser}
-        sendMessage={sendMessage}
+        sendMessage={handleSendMessage}
         isMobile={isMobile}
       />
     </div>
