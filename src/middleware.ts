@@ -1,41 +1,16 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
-import { allRoutes } from "./constants/allRoutes";
-import { AUTH_SECRET } from "./constants/allEnv";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-export async function middleware(req: NextRequest) {
-  // Check if the token exists in the cookies
-  let token = req.cookies.get("token")?.value;
+const isProtectedRoute = createRouteMatcher(["/dashboard(.*)", "/forum(.*)"]);
 
-  // If no token in cookies, attempt to get it from the JWT
-  if (!token) {
-    token = (await getToken({ req, secret: AUTH_SECRET }))?.token as string;
+export default clerkMiddleware(async (auth, req) => {
+  if ((await auth()).userId && isProtectedRoute(req)) {
+    return (await auth()).redirectToSignIn();
   }
+});
 
-  // If there's still no token and the request is not to a public path, redirect to login
-  if (!token && !req.nextUrl.pathname.startsWith("/public")) {
-    const url = req.nextUrl.clone();
-    url.pathname = allRoutes.LOGIN;
-    return NextResponse.redirect(url);
-  }
-
-  if (token) {
-    const response = NextResponse.next();
-    response.cookies.set("token", token as string, {
-      httpOnly: false,
-      // secure: process.env.NODE_ENV === "production",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 7, // 1 week
-    });
-    return response;
-  }
-
-  // Continue as normal for public paths
-  return NextResponse.next();
-}
-
-// Define which paths this middleware should be applied to
 export const config = {
-  matcher: ["/profile/:id*"],
+  matcher: [
+    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    "/(api|trpc)(.*)",
+  ],
 };
