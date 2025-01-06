@@ -40,7 +40,7 @@ const PostCard = (props: IProps) => {
           </div>
           <div className="p-6">
             <div className="flex items-center justify-between mb-3">
-              <h5 className="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900 dark:text-white">
+              <h5 className="block font-sans text-xl antialiased  font-medium leading-snug tracking-normal text-blue-gray-900 dark:text-white">
                 {title}
               </h5>
               <p className="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 dark:text-white antialiased">
