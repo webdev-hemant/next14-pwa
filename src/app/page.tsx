@@ -10,7 +10,7 @@ export default function Home() {
         <ClerkAuthHandler />
         <PostCard
           {...{
-            img_url: "",
+            img_url: "/public/next.svg",
             desc: "grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]",
             title:
               "grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]",
