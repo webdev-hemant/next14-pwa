@@ -1,6 +1,6 @@
-import UserDetails from "./components/userDetails";
+import UserDetails from "../components/molecules/userDetails";
 import ClerkAuthHandler from "./hooks/clerkAuthHandler";
-import PostCard from "./components/cards/postCard/postCard";
+import PostCard from "../components/molecules/cards/postCard/postCard";
 
 export default function Home() {
   return (

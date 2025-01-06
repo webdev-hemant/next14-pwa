@@ -1,4 +1,4 @@
-import LoginComponent from "../components/loginComponent";
+import LoginComponent from "../../components/molecules/loginComponent";
 
 const LoginPage = () => {
   return (
