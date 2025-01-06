@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Login",
