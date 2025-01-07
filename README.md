@@ -1,36 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Primary Colors:- Soft Blue (#A3D1E8) & Soft Green (#A8D5BA)
+Accent Colors: Light Gray (#F1F1F1) & White (#FFFFFF)
 
-## Getting Started
+Primary Colors: Soft Beige (#F5F5F0) & Warm Gray (#D1D3D4)
+Accent Colors: Sage Green (#A3B18C) & Lavender (#B8A9C9)
 
-First, run the development server:
+Primary Colors: Light Lavender (#E1C6E8) & Soft Sky Blue (#A1C6EA)
+Accent Colors: Misty Gray (#D3D3D3) & Soft Peach (#FAD0C4)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Primary Colors: Warm Taupe (#D8C6B9) & Soft Olive Green (#B8C7A2)
+Accent Colors: Light Terracotta (#F2D1C9) & Off-White (#F9F9F9)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Primary Colors: Navy Blue (#354C6C) & Light Aqua (#81C4D3)
+Accent Colors: Light Gray (#E6E6E6) & Soft White (#FFFFFF)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Primary Colors: Soft Coral (#F7A4B3) & Sky Blue (#70C1B3)
+Accent Colors: Pale Yellow (#F2E3B1) & Light Gray (#D1D3D4)
