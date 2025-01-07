@@ -4,7 +4,7 @@ import DarkModeToggle from "@/components/atoms/darkModeToggle/darkModeToggle";
 import { allRoutes } from "@/constants/allRoutes";
 import Link from "next/link";
 
-const BNavigationTwo = async () => {
+const BottomNavigation = async () => {
   return (
     <>
       <div className="py-12" />
@@ -198,4 +198,4 @@ const BNavigationTwo = async () => {
   );
 };
 
-export default BNavigationTwo;
+export default BottomNavigation;

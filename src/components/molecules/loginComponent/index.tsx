@@ -1,9 +1,12 @@
-import React from 'react'
+import LoginForm from "@/components/atoms/loginForm/loginForm";
+import React from "react";
 
 const LoginComponent = () => {
   return (
-    <div>LoginComponent</div>
-  )
-}
+    <div className="flex justify-center align-top">
+      <LoginForm />
+    </div>
+  );
+};
 
-export default LoginComponent
+export default LoginComponent;

@@ -8,7 +8,6 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/nextjs";
-import BNavigationTwo from "@/components/molecules/bottomNavigation/bottomNavigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +42,6 @@ export default function RootLayout({
             <UserButton />
           </SignedIn>
           {children}
-          <BNavigationTwo />
         </body>
       </html>
     </ClerkProvider>

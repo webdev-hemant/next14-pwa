@@ -1,6 +1,7 @@
 import UserDetails from "../components/molecules/userDetails";
 import ClerkAuthHandler from "./hooks/clerkAuthHandler";
 import PostCard from "../components/molecules/cards/postCard/postCard";
+import BottomNavigation from "@/components/molecules/bottomNavigation/bottomNavigation";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
           }}
         />
       </main>
+      <BottomNavigation />
     </div>
   );
 }
