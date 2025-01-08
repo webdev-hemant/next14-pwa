@@ -1,4 +1,7 @@
 "use client";
+
+import { Dispatch, SetStateAction } from "react";
+
 // import { StaticImport } from "next/dist/shared/lib/get-img-props";
 // import Image from "next/image";
 
@@ -7,13 +10,14 @@ interface IProps {
   alt: string;
   width?: number | `${number}`;
   height?: number | `${number}`;
+  setLike: Dispatch<SetStateAction<number>>;
 }
 
 const SecondPostCardImg = (props: IProps) => {
-  const { src, alt, width, height } = props;
+  const { src, alt, width, height, setLike } = props;
 
   const handleDoubleClick = () => {
-    alert("Button was double-clicked!");
+    setLike((prev) => prev + 1);
   };
 
   return (
