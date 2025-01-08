@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Convergence-Regular";
+  src: url("/public/fonts/Convergence-Regular.ttf") format("truetype");
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,7 +19,9 @@
 }
 
 body {
-  color: var(--foreground);
+  font-family: Convergence-Regular;
+  /* color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif; */
 }
+

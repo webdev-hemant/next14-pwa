@@ -11,6 +11,15 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        colors: {
+          // Primary Colors
+          "soft-blue": "#A3D1E8",
+          "soft-green": "#A8D5BA",
+
+          // Accent Colors
+          "light-gray": "#F1F1F1",
+          white: "#FFFFFF",
+        },
       },
     },
   },

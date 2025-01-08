@@ -9,18 +9,18 @@ const ClerkAuthHandler = () => {
 
   useEffect(() => {
     const storeUserInDb = async () => {
-      if (isSignedIn && user) {
-        try {
-          await axios.post("/api/store-user", {
-            userId: user.id,
-            email: user.emailAddresses[0].emailAddress,
-            name: user.fullName,
-          });
-          console.log("User stored successfully");
-        } catch (err) {
-          console.error("Error storing user:", err);
-        }
-      }
+      // if (isSignedIn && user) {
+      //   try {
+      //     await axios.post("/api/store-user", {
+      //       userId: user.id,
+      //       email: user.emailAddresses[0].emailAddress,
+      //       name: user.fullName,
+      //     });
+      //     console.log("User stored successfully");
+      //   } catch (err) {
+      //     console.error("Error storing user:", err);
+      //   }
+      // }
     };
 
     storeUserInDb();
