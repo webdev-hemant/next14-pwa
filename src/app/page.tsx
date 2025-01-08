@@ -7,11 +7,8 @@ import SecondPostCard from "@/components/molecules/cards/secondPostCard/secondPo
 export default function Home() {
   return (
     <div className="">
-      <UserDetails />
-      <div className="bg-colors-soft-green">
-        <h1 className="text-white">Hemant Jadhav</h1>
-      </div>
-      <main className="flex gap-2 items-center flex-wrap">
+      {/* <UserDetails /> */}
+      <main className="flex gap-2 items-center justify-center flex-wrap">
         <ClerkAuthHandler />
         {/* <PostCard
           {...{
