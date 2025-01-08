@@ -9,7 +9,7 @@ const SecondPostCard = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="max-w-xs container bg-white rounded-xl shadow-lg transform">
+      <div className="max-w-xs container bg-white rounded-xl shadow-2xl transform">
         <div>
           <h1 className="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100">
             Lampara Look
