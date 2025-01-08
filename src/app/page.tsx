@@ -1,7 +1,7 @@
-import UserDetails from "../components/molecules/userDetails";
+// import UserDetails from "../components/molecules/userDetails";
 import ClerkAuthHandler from "./hooks/clerkAuthHandler";
-import PostCard from "../components/molecules/cards/postCard/postCard";
-import BottomNavigation from "@/components/molecules/bottomNavigation/bottomNavigation";
+// import PostCard from "../components/molecules/cards/postCard/postCard";
+// import BottomNavigation from "@/components/molecules/bottomNavigation/bottomNavigation";
 import SecondPostCard from "@/components/molecules/cards/secondPostCard/secondPostCard";
 
 export default function Home() {

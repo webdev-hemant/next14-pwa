@@ -3,12 +3,7 @@ import googleSvg from "@/images/google.svg";
 
 const SocialLogins = () => {
   return (
-    <form
-      className="text-center mb-3"
-      action={() => {
-        alert("clicked");
-      }}
-    >
+    <form className="text-center mb-3">
       <button
         className="bg-slate-200 dark:bg-white w-full text-black px-4 py-2 rounded-md m-1 text-base flex items-center justify-center gap-2"
         type="submit"

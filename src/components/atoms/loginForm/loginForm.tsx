@@ -21,7 +21,11 @@ export const handleLogin = async (formData: FormData) => {
   }
 };
 
-const LoginForm = async ({ searchParams }: { searchParams?: { error?: string } }) => {
+const LoginForm = async ({
+  searchParams,
+}: {
+  searchParams?: { error?: string };
+}) => {
   return (
     <div className="w-full my-3 max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
       {searchParams?.error && (
@@ -30,7 +34,7 @@ const LoginForm = async ({ searchParams }: { searchParams?: { error?: string } }
         </div>
       )}
       <SocialLogins />
-      <form action={handleLogin} className="space-y-6 relative">
+      <form className="space-y-6 relative">
         <h5 className="text-xl -mb-5 text-center font-medium text-gray-900 dark:text-white">
           OR
         </h5>

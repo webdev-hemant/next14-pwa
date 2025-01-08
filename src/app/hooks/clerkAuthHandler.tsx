@@ -1,7 +1,7 @@
 "use client";
 import { useAuth, useUser } from "@clerk/nextjs";
 import { useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 const ClerkAuthHandler = () => {
   const { isSignedIn } = useAuth();
