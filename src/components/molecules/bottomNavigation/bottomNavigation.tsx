@@ -60,27 +60,35 @@ const BottomNavigation = async () => {
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
           <Link
-            href={allRoutes.DEMO}
-            data-tooltip-target="tooltip-bookmark"
+            href={allRoutes.SEARCH()}
+            data-tooltip-target="tooltip-post"
             type="button"
             className="inline-flex flex-col items-center justify-center p-4 group"
           >
             <svg
-              className="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-white dark:group-hover:text-blue-500"
               xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 14 20"
+              width="20px"
+              height="20px"
+              viewBox="0 0 24 24"
+              fill="none"
             >
-              <path d="M13 20a1 1 0 0 1-.64-.231L7 15.3l-5.36 4.469A1 1 0 0 1 0 19V2a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v17a1 1 0 0 1-1 1Z" />
+              <path
+                className="text-gray-500 dark:text-gray-400 group-hover:stroke-blue-500"
+                d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+                stroke="#000000"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
-            <span className="sr-only">Bookmark</span>
+            <span className="sr-only">View sugested posts</span>
           </Link>
           <div
-            id="tooltip-bookmark"
+            id="tooltip-post"
             role="tooltip"
-            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip"
+            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
           >
-            Bookmark
+            View New post
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
           <Link
@@ -114,50 +122,27 @@ const BottomNavigation = async () => {
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
           <Link
-            href={allRoutes.PROFILE("cat")}
-            data-tooltip-target="tooltip-post"
+            href={allRoutes.DEMO}
+            data-tooltip-target="tooltip-bookmark"
             type="button"
             className="inline-flex flex-col items-center justify-center p-4 group"
           >
             <svg
-              className="w-5 h-5 mb-1 group-hover:stroke-blue-500 dark:group-hover:stroke-blue-500"
-              width="256px"
-              height="256px"
-              viewBox="0 0 24 24"
-              fill="none"
+              className="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-white dark:group-hover:text-blue-500"
               xmlns="http://www.w3.org/2000/svg"
-              stroke="rgb(156, 163, 175)"
-              transform="matrix(1, 0, 0, 1, 0, 0)"
+              fill="currentColor"
+              viewBox="0 0 14 20"
             >
-              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                // stroke="#CCCCCC"
-                strokeWidth="1.008"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <g id="Communication / Chat_Conversation_Circle">
-                  <path
-                    id="Vector"
-                    d="M9.33814 15.9905C12.4946 15.8151 15 13.2003 15 10C15 6.68629 12.3137 4 9 4C5.68629 4 3 6.68629 3 10C3 11.1807 3.34094 12.2817 3.92989 13.21L3.50586 14.482L3.50518 14.4839C3.34278 14.9711 3.26154 15.2149 3.31938 15.3771C3.36979 15.5184 3.48169 15.6299 3.62305 15.6803C3.78472 15.7379 4.02675 15.6573 4.51069 15.4959L4.51758 15.4939L5.79004 15.0698C6.7183 15.6588 7.81935 15.9998 9.00006 15.9998C9.11352 15.9998 9.22624 15.9967 9.33814 15.9905ZM9.33814 15.9905C9.33822 15.9907 9.33806 15.9902 9.33814 15.9905ZM9.33814 15.9905C10.1591 18.3259 12.3841 20.0002 15.0001 20.0002C16.1808 20.0002 17.2817 19.6588 18.2099 19.0698L19.482 19.4939L19.4845 19.4944C19.9717 19.6567 20.2158 19.7381 20.378 19.6803C20.5194 19.6299 20.6299 19.5184 20.6803 19.3771C20.7382 19.2146 20.6572 18.9706 20.4943 18.4821L20.0703 17.21L20.2123 16.9746C20.7138 16.0979 20.9995 15.0823 20.9995 14C20.9995 10.6863 18.3137 8 15 8L14.7754 8.00414L14.6621 8.00967"
-                    // stroke="#fff"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                </g>
-              </g>
+              <path d="M13 20a1 1 0 0 1-.64-.231L7 15.3l-5.36 4.469A1 1 0 0 1 0 19V2a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v17a1 1 0 0 1-1 1Z" />
             </svg>
-            <span className="sr-only">Chat</span>
+            <span className="sr-only">Bookmark</span>
           </Link>
           <div
-            id="tooltip-post"
+            id="tooltip-bookmark"
             role="tooltip"
-            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip"
           >
-            New post
+            Bookmark
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
           <Link
